@@ -42,5 +42,6 @@
   		<module>lifeshop-sso</module>
   		<module>lifeshop-web</module>
   		<module>lifeshop-config</module>
+  		<module>lifeshop-gatway</module>
   	</modules>
 </project>
