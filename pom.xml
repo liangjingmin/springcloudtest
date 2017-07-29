@@ -44,4 +44,30 @@
   		<module>lifeshop-config</module>
   		<module>lifeshop-gatway</module>
   	</modules>
+  	
+  	<build>
+  		<defaultGoal>compile</defaultGoal>
+  		
+  		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.3</version>
+                <configuration>
+                    <groups>unit</groups>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                  <verbose>true</verbose>
+                  <fork>true</fork>
+                  <compilerVersion>1.7</compilerVersion>
+                </configuration>
+            </plugin>
+             
+        </plugins>
+  	</build>
 </project>

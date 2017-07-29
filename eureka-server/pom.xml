@@ -13,12 +13,51 @@
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 	    </dependency>
   	</dependencies>
-  	
+  	<profiles>
+  		<profile>
+  			<id>test</id>
+  			<properties>
+  				<env.name>test</env.name>
+  			</properties>
+  		</profile>
+  		<profile>
+  			<id>beta</id>
+  			<properties>
+  				<env.name>beta</env.name>
+  			</properties>
+  		</profile>
+  	</profiles>
   	<build>
+  		<resources>
+  			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+			</resource>
+  		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>  
+			    <version>2.5</version>
+			    <configuration>  
+			    	<jarName>lifeshop-eurekaserver-${env.name}.jar</jarName>
+			        <archive>  
+			            <manifest>  
+			                <!-- 告知 maven-jar-plugin添加一个 Class-Path元素到 MANIFEST.MF文件，以及在Class-Path元素中包括所有依赖项 -->  
+			                <addClasspath>true</addClasspath>  
+			                <!-- 所有的依赖项应该位于 lib文件夹 -->  
+			                <classpathPrefix>lib/</classpathPrefix>  
+			                <!-- 当用户使用 lib命令执行JAR文件时，使用该元素定义将要执行的类名 -->  
+			                <mainClass>cn.lifeshop.eureka.server.EurekaApplication</mainClass>  
+			            </manifest>  
+			        </archive>  
+			    </configuration>   
 			</plugin>
 		</plugins>
 	</build>
