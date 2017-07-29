@@ -46,7 +46,7 @@
 				<artifactId>maven-jar-plugin</artifactId>  
 			    <version>2.5</version>
 			    <configuration>  
-			    	<jarName>lifeshop-eurekaserver-${env.name}.jar</jarName>
+			    	<jarName>lifeshop-eurekaserver-${env.name}</jarName>
 			        <archive>  
 			            <manifest>  
 			                <!-- 告知 maven-jar-plugin添加一个 Class-Path元素到 MANIFEST.MF文件，以及在Class-Path元素中包括所有依赖项 -->  
